@@ -55,6 +55,7 @@ in
     wget
     alsa-lib
     alsa-utils
+    (pkgs.callPackage ./camilladsp.nix {})
   ];
 
   # Enable the OpenSSH daemon.
@@ -101,4 +102,3 @@ in
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-
