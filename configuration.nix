@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   wifi_config = if builtins.pathExists /etc/nixos/wifi_config.nix then (import /etc/nixos/wifi_config.nix) else {};
+  camilladsp = (pkgs.callPackage ./camilladsp.nix {});
 in
 {
   imports =
@@ -92,6 +93,21 @@ in
     '';
     wantedBy = [ "multi-user.target" ];
   };
+
+  # systemd.services.camilladsp = {
+  #   description = "camilladsp";
+  #   script = ''
+  #     ${camilladsp.out}/camilladsp -c ${camilladsp.config}
+  #   '';
+  #   unitConfig = {
+  #     StartLimitIntervalSec = "0";
+  #   };
+  #   serviceConfig = {
+  #     Restart = "always";
+  #     RestartSec = "1s";
+  #   };
+  #   wantedBy = [ "multi-user.target" ];
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
