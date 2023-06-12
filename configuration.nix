@@ -18,6 +18,11 @@ in
     useDHCP = true;
   };
 
+  boot.kernelPatches = [{
+    name = "fix-edirol-ua101";
+    patch = ./asd.patch;
+  }];
+
   systemd.network.networks."enu1u1" = {
     linkConfig.RequiredForOnline = "no";
   };
@@ -56,7 +61,7 @@ in
     wget
     alsa-lib
     alsa-utils
-    (pkgs.callPackage ./camilladsp.nix {})
+    camilladsp
   ];
 
   # Enable the OpenSSH daemon.
