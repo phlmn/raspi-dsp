@@ -17,11 +17,6 @@ jobs:
         uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            extra-platforms = aarch64-linux arm-linux
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
 
       - name: build image
-        run: ./build-image.cross.sh
+        run: ./build-image.x86_64-linux.sh

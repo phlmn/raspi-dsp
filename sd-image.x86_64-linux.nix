@@ -1,5 +1,5 @@
 { ... }: {
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  nixpkgs.buildPlatform = "x86_64-linux";
   sdImage.compressImage = false;
 
   imports = [

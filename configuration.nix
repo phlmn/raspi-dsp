@@ -20,7 +20,7 @@ in
 
   boot.kernelPatches = [{
     name = "fix-edirol-ua101";
-    patch = ./asd.patch;
+    patch = ./fix_edirol_ua101.patch;
   }];
 
   systemd.network.networks."enu1u1" = {
