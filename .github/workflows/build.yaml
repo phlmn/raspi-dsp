@@ -20,3 +20,8 @@ jobs:
 
       - name: build image
         run: ./build-image.x86_64-linux.sh
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: image
+          path: result/sd-image/*.img
