@@ -19,7 +19,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-eKIIjf/1UikoC+UQbmUphXbO6WA6+O82CcsULuPppQ4=";
 
-  nativeBuildInputs = [ pkgs.pkg-config rustPlatform.bindgenHook ];
+  nativeBuildInputs = [ pkgs.pkg-config rustPlatform.bindgenHook ]
+  ++ lib.optionals stdenv.isLinux [
+    pkgs.alsaLib
+  ];
+  
   buildInputs = []
   ++ lib.optionals stdenv.isLinux [
     pkgs.alsaLib
