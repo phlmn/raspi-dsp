@@ -19,14 +19,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-eKIIjf/1UikoC+UQbmUphXbO6WA6+O82CcsULuPppQ4=";
 
-  nativeBuildInputs = [ pkgs.pkg-config rustPlatform.bindgenHook ]
-  ++ lib.optionals stdenv.isLinux [
-    pkgs.alsaLib
-  ];
-  
+  nativeBuildInputs = [ pkgs.pkg-config rustPlatform.bindgenHook ];
+
   buildInputs = []
   ++ lib.optionals stdenv.isLinux [
-    pkgs.alsaLib
+    pkgs.alsa-lib
   ]
   ++ lib.optionals stdenv.isDarwin (
     with darwin.apple_sdk.frameworks; [
