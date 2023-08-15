@@ -18,11 +18,6 @@ in
     useDHCP = true;
   };
 
-  boot.kernelPatches = [{
-    name = "fix-edirol-ua101";
-    patch = ./fix_edirol_ua101.patch;
-  }];
-
   systemd.network.networks."enu1u1" = {
     linkConfig.RequiredForOnline = "no";
   };
